@@ -1,1 +1,0 @@
-# offensive-kali-ansible
