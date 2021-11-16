@@ -1,0 +1,36 @@
+---
+- name: Install and upgrade pip
+  ansible.builtin.pip:
+    name: pip
+    extra_args: --upgrade
+    executable: pip3
+
+- name: Install python packages
+  ansible.builtin.pip:
+    name: '{{ item }}'
+    state: latest
+    executable: pip3
+  loop:
+    - bloodhound
+    - ldap3  
+    - Cython
+    - mitm6
+    - pipenv
+    - poetry
+    - python3-ldap
+    - python-libpcap
+    - requests
+    - unicorn
+
+#- name: Install pipx
+#  ansible.builtin.shell: python3 -m pip install --user pipx
+#
+#- name: Add pipx too path
+#  ansible.builtin.shell: python3 -m pipx ensurepath
+
+#- name: Source Path and Download witnessme
+#  ansible.builtin.shell: source .zshrc && pipx install witnessme --force
+#  args:
+#    executable: /bin/zsh
+
+

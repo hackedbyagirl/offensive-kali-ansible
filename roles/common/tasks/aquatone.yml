@@ -1,0 +1,9 @@
+---
+# Add aquatone play -- downlaoded differently than other git repos
+
+- name: Download aquatone binaries and unzip files
+  ansible.builtin.unarchive:
+    src: "{{aquatone}}"
+    dest: /opt
+    remote_src: yes
+

@@ -1,0 +1,36 @@
+---
+# Default variables 
+
+# Group ownership for the tools that are installed directly to /opt
+group: root
+
+# Base directory where all manually-installed tools will be installed
+git_base_dir: "/opt"
+
+# Tools to be manually installed
+git_repos:
+  - {dir_name: "certi", repo: "https://github.com/zer1t0/certi.git"}
+  - {dir_name: "certipy", repo: "https://github.com/ly4k/Certipy.git"}
+  - {dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails.git"}
+  - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch.git"}
+  - {dir_name: "google-dork-scan", repo: "https://github.com/IvanGlinkin/Fast-Google-Dorks-Scan.git"}
+  - {dir_name: "github-search", repo: "https://github.com/gwen001/github-search.git"}
+  - {dir_name: "gnmap-parser", repo: "https://github.com/ChrisTruncer/gnmap-parser.git"}
+  - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher.git"}
+  - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump.git"}
+  - {dir_name: "impacket", repo: "https://github.com/SecureAuthCorp/impacket.git"}
+  - {dir_name: "JSscanner", repo: "https://github.com/dark-warlord14/JSScanner.git"}
+  - {dir_name: "knockpy", repo: "https://github.com/guelfoweb/knock.git"}
+  - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto.git"}
+  - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr.git"}
+  - {dir_name: "o365creeper", repo: "https://github.com/LMGsec/o365creeper.git"}
+  - {dir_name: "PCredz", repo: "https://github.com/lgandx/PCredz.git"}
+  - {dir_name: "pywhisker", repo: "https://github.com/ShutdownRepo/pywhisker.git"}
+  - {dir_name: "quieter-firefox", repo: "https://bitbucket.org/mrbbking/quieter-firefox.git"}
+  - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail.git"}
+  - {dir_name: "spiderfoot", repo: "https://github.com/smicallef/spiderfoot.git"} 
+  - {dir_name: "Token-Reverser", repo: "https://github.com/dariusztytko/token-reverser.git"}
+
+# aquatone, which is installed manually
+aquatone: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"
+

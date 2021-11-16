@@ -1,0 +1,17 @@
+# roles/common/main.yml
+---
+- name: apt tasks 
+  become: True
+  ansible.builtin.import_tasks: apt.yml
+
+- name: Python Packages
+  ansible.builtin.import_tasks: pip.yml
+  
+- name: Install Tools from GitHub
+  become: True
+  ansible.builtin.import_tasks: git.yml
+
+- name: Install Aquatone Package
+  become: True
+  ansible.builtin.import_tasks: aquatone.yml
+

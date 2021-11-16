@@ -1,0 +1,60 @@
+---
+# Installing git repos -- better for permission handling
+
+- name: Install tools from github and set permissions
+  block:
+  - name: Create a directory for each tool to be installed
+    ansible.builtin.file:
+      group: "{{ group }}"
+      mode: 0755
+      path: "{{ git_base_dir }}/{{ item.dir_name }}"
+      state: directory
+    loop: "{{ git_repos }}"
+    loop_control:
+      label: "{{ item.dir_name }}"
+
+  - name: Install github tools
+    ansible.builtin.git:
+      repo: "{{ item.repo }}"
+      dest: "{{ git_base_dir }}/{{ item.dir_name }}"
+      force: true
+    loop: "{{ git_repos }}"
+    loop_control:
+      label: "{{item.repo}}"
+
+  - name: Set new file privileges -- recursive
+    ansible.builtin.file:
+      path: "{{ git_base_dir }}/{{ item.dir_name }}"
+      mode: 0755
+      recurse: yes
+    loop: "{{git_repos}}"
+    loop_control:
+      label: "{{item.repo}}"
+
+
+- name: Install package dependencies
+  block:
+    - name: Setup python packages for required git repos 
+      ansible.builtin.command: python3 setup.py install
+      args:
+        chdir: "{{git_base_dir}}/{{item}}"
+      loop:
+        - certipy
+        - certi
+        - knockpy  
+
+    - name: Setup impacket requirements
+      ansible.builtin.command: pip install .
+      args:
+        chdir: /opt/impacket
+
+    - name: Install pip dependencies for required git repos
+      ansible.builtin.command: pip install -r requirements.txt
+      args:
+        chdir: "{{git_base_dir}}/{{item}}"
+      loop:
+        - dirsearch
+        - knockpy
+        - pywhisker
+        - spiderfoot
+

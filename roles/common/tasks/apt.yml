@@ -1,0 +1,63 @@
+---  
+- name: apt-update packages
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Remove useless packages from cache
+  ansible.builtin.apt:
+    autoclean: true      
+ 
+- name: Remove package dependencies that are no longer required 
+  ansible.builtin.apt:
+    autoremove: true        
+
+- name: Install multiple apt packages
+  ansible.builtin.apt:
+    update_cache: yes
+    force_apt_get: yes 
+    name:
+      - assetfinder
+      - awscli
+      - bloodhound
+      - chromium
+      - docker.io
+      - docker-compose
+      - dnsutils
+      - eyewitness
+      - gdb
+      - gdbserver
+      - gem
+      - gobuster
+      - golang
+      - jq
+      - libpcap-dev  
+      - libssl-dev
+      - mimikatz
+      - ncat  
+      - nbtscan-unixwiz
+      - neo4j
+      - npm
+      - parallel
+      - payloadsallthethings
+      - powershell-empire
+      - python3-pip
+      - python3-venv
+      - gobuster
+      - ffuf
+      - netdiscover
+      - seclists 
+      - spiderfoot
+      - sublist3r 
+      - terminator  
+    state: present
+
+- name: Remove useless packages from cache
+  ansible.builtin.apt:
+    autoclean: true      
+ 
+- name: Remove package dependencies that are no longer required 
+  ansible.builtin.apt:
+    autoremove: true        
+
+
+

@@ -1,0 +1,6 @@
+# Main Playbook
+---
+- hosts: localhost
+  roles:
+    - common 
+
