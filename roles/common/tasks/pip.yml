@@ -22,9 +22,9 @@
     - requests
     - unicorn
 
-#- name: Install pipx
-#  ansible.builtin.shell: python3 -m pip install --user pipx
-#
+- name: Install pipx
+  ansible.builtin.shell: python3 -m pip install --user pipx
+
 #- name: Add pipx too path
 #  ansible.builtin.shell: python3 -m pipx ensurepath
 
