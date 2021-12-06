@@ -1,5 +1,38 @@
 ---
-# Default variables 
+# apt packages to install
+kali_packages:
+  - assetfinder
+  - awscli
+  - bloodhound
+  - chromium
+  - docker.io
+  - docker-compose
+  - dnsutils
+  - eyewitness
+  - gdb
+  - gdbserver
+  - gem
+  - gobuster
+  - golang
+  - jq
+  - libpcap-dev
+  - libssl-dev
+  - mimikatz
+  - ncat
+  - nbtscan-unixwiz
+  - neo4j
+  - npm
+  - parallel
+  - powershell-empire
+  - python3-pip
+  - python3-venv
+  - gobuster
+  - ffuf
+  - netdiscover
+  - seclists
+  - spiderfoot
+  - sublist3r
+  - terminator
 
 # Group ownership for the tools that are installed directly to /opt
 group: root
