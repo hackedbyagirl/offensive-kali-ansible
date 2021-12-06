@@ -1,6 +1,5 @@
 ---
 # Installing git repos -- better for permission handling
-
 - name: Install tools from github and set permissions
   block:
   - name: Create a directory for each tool to be installed
@@ -30,7 +29,6 @@
     loop: "{{git_repos}}"
     loop_control:
       label: "{{item.repo}}"
-
 
 - name: Install package dependencies
   block:
