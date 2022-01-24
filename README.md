@@ -16,9 +16,9 @@ The current roles included in this ansible include the following:
 # Installalation
 There are two ways you can deploy this ansible playbook. 
 - On local Kali Host
-- Remote Connection from mac (or linux) to Single or Multiple Hosts
+- Remote Connection from mac (or linux) to Single or Multiple Hosts *Sorry Windows*
  
-## Kali
+## Kali or Linux Host
 The following is required to be on the system before running this ansible playbook
 - ansible
 
