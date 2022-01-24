@@ -104,7 +104,7 @@ This playbook sets up ansible to be ran on a local host. To change that to, edit
 
 
 ### Setting a Remote User
-By default, ansible connects to all remote devices with the username you are using on the control node. If that username does not exist on the remote device, you will need to set a different username for the connection in the playbook. By default, this playbook will have the username set to `kali` in the inventory file hosts.ini
+By default, ansible connects to all remote devices with the username you are using on the control node. If that username does not exist on the remote device, you will need to set a different username for the connection in the playbook. By default, this playbook will have the username set to `kali` in the inventory file `ansible/hosts.ini`
 
 
 ### Execution 
