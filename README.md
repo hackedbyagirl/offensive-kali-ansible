@@ -1,5 +1,5 @@
 # Offensive Kali Ansible Playbook 
-This Ansible Playbook deploys initial configuration for offensive kali machines. The Ansible Roles included in this playbook automate the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine. 
+This Ansible Playbook deploys initial configuration for offensive kali machines. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine. 
 
 ![ansible-pic](img/ansible-redteam.png)
 
