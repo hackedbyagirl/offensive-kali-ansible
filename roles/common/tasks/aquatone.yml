@@ -6,4 +6,5 @@
     src: "{{aquatone}}"
     dest: /opt
     remote_src: yes
-
+    group: "{{ group }}"
+    mode: 0755
