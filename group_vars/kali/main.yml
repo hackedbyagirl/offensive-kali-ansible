@@ -35,7 +35,7 @@ kali_packages:
   - terminator
 
 # Group ownership for the tools that are installed directly to /opt
-group: root
+group: kali
 
 # Base directory where all manually-installed tools will be installed
 git_base_dir: "/opt"
