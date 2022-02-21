@@ -56,7 +56,7 @@ git_repos:
   - {dir_name: "knockpy", repo: "https://github.com/guelfoweb/knock.git"}
   - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto.git"}
   - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr.git"}
-  - {dir_name: "o365creeper", repo: "https://github.com/LMGsec/o365creeper.git"}
+  - {dir_name: "o365spray", repo: "https://github.com/hackedbyagirl/o365spray.git"}
   - {dir_name: "PCredz", repo: "https://github.com/lgandx/PCredz.git"}
   - {dir_name: "pywhisker", repo: "https://github.com/ShutdownRepo/pywhisker.git"}
   - {dir_name: "quieter-firefox", repo: "https://bitbucket.org/mrbbking/quieter-firefox.git"}
