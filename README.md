@@ -1,24 +1,29 @@
-# Offensive Kali Ansible Playbook 
+<h1 align="center">Offensive Kali Ansible Playbook</h1>
+
 This Ansible Playbook deploys initial configuration for offensive kali machines. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine. 
 
-![ansible-pic](img/ansible-redteam.png)
+ [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
 
-## Roles: Current
-The current roles included in this ansible include the following:
+## Table of Contents
++ [Description](#description)
++ [Getting Started](#getting_started)
++ [Usage](#usage)
++ [Execution](#execution)
+
+## Description <a name = "description"></a>
+This playbook contains multiple tasks embedded within the roles. The current roles included in this ansible playbook include the following:
 
 - Common
   - apt package updates, cleanup, and installation of offensive packages
   - installation of common offensive python packages
   - installation of common git repos as well as setting up their package dependencies  
 
----
-
-# Installalation
+## Getting Started <a name = "getting_started"></a>
 There are two ways you can deploy this ansible playbook. 
 - On local Kali Host
 - Remote Connection from mac (or linux) to Single or Multiple Hosts *Sorry Windows*
- 
-## Kali or Linux Host
+
+### Kali or Linux Host
 The following is required to be on the system before running this ansible playbook
 - ansible
 
@@ -26,7 +31,7 @@ This can be installed using the following command
 
 `sudo apt-get install ansible`
 
-## Mac - homebrew
+### Mac - homebrew
 The following is required on your Mac before installing ansible
 - Homebrew
 
@@ -44,10 +49,10 @@ brew update
 brew install ansible
 ```
 ---
-# Usage
+## Usage <a name = "usage"></a>
 To use this playbook, you can either run it from the kali host locally or you can deploy it remotely to a single or multiple hosts from your mac (or linux machine).
 
-## Local Execution - Kali Host
+### Local Execution - Kali Host
  After ansible is installed on your local kali host, clone this repo and run ansible playbook.
 
 ```bash
@@ -58,7 +63,7 @@ ansible-playbook -i ansible/local.ini site.yml -K
 ```
 *By default, this repo is only made to be used with one host*
 
-## Remote Connection - Single or Multiple Hosts
+### Remote Connection - Single or Multiple Hosts
 This ansible playbook can be deployed against a signle host or multiple machines at the same through a remote connection (our method will be SSH). The following will be accomplished by:
 1. Create a host inventory
 2. Set up SSH conenctions for each host
@@ -107,7 +112,7 @@ This playbook sets up ansible to be ran on a local host. To change that to, edit
 By default, ansible connects to all remote devices with the username you are using on the control node. If that username does not exist on the remote device, you will need to set a different username for the connection in the playbook. By default, this playbook will have the username set to `kali` in the inventory file `ansible/hosts.ini`
 
 
-### Execution 
+## Execution <a name = "execution"></a>
 ```bash
 # clone repo, move to directory, execute playbook 
 git clone https://github.com/hackedbyagirl/offensive-kali-ansible.git
