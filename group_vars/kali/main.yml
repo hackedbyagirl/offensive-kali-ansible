@@ -3,6 +3,7 @@
 kali_packages:
   - assetfinder
   - awscli
+  - bettercap
   - bloodhound
   - chromium
   - docker.io
