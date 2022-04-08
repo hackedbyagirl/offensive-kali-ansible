@@ -3,6 +3,10 @@
 - name: apt tasks 
   become: True
   ansible.builtin.import_tasks: apt.yml
+  
+- name: Set Environment
+  become: True
+  ansible.builtin.import_tasks: env.yml
 
 - name: Python Packages
   ansible.builtin.import_tasks: pip.yml
@@ -15,6 +19,3 @@
   become: True
   ansible.builtin.import_tasks: aquatone.yml
 
-- name: Set Environment
-  become: True
-  ansible.builtin.import_tasks: env.yml
