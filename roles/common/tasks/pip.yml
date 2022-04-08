@@ -25,12 +25,9 @@
 - name: Install pipx
   ansible.builtin.shell: python3 -m pip install --user pipx
 
-#- name: Add pipx too path
-#  ansible.builtin.shell: python3 -m pipx ensurepath
-
-#- name: Source Path and Download witnessme
-#  ansible.builtin.shell: source .zshrc && pipx install witnessme --force
-#  args:
-#    executable: /bin/zsh
+- name: Source Path and Download witnessme
+  ansible.builtin.shell: source .zshrc && pipx install witnessme --force
+  args:
+    executable: /bin/zsh
 
 
