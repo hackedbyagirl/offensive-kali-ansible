@@ -5,11 +5,13 @@ kali_packages:
   - awscli
   - bettercap
   - bloodhound
+  - build-essential
   - chromium
   - docker.io
   - docker-compose
   - dnsutils
   - eyewitness
+  - ffuf
   - gdb
   - gdbserver
   - gem
@@ -18,6 +20,12 @@ kali_packages:
   - jq
   - libpcap-dev
   - libssl-dev
+  - libbz2-dev 
+  - libreadline-dev
+  - libsqlite3-dev 
+  - libncurses5-dev 
+  - libncursesw5-dev
+  - liblzma-dev 
   - mimikatz
   - ncat
   - nbtscan-unixwiz
@@ -25,27 +33,48 @@ kali_packages:
   - npm
   - parallel
   - powershell-empire
+  - python3-openssl
   - python3-pip
   - python3-venv
-  - gobuster
-  - ffuf
-  - netdiscover
   - seclists
   - spiderfoot
   - sublist3r
-  - terminator
+    
+# pip packages    
+pip_packages:
+  - Cython
+  - dirhunt
+  - getsploit
+  - ldap3  
+  - mitm6
+  - minikerberos
+  - pipenv
+  - poetry
+  - python3-ldap
+  - python-libpcap
+  - pywhat
+  - requests
+  - unicorn
+
+# Gem Packages -- still needs added as task
+gem_packages:
+  - pass-station
+  - wpscan
 
 # Group ownership for the tools that are installed directly to /opt
 group: kali
+user: kali
 
 # Base directory where all manually-installed tools will be installed
 git_base_dir: "/opt"
 
 # Tools to be manually installed
 git_repos:
+  - {dir_name: "bloodhound", repo: "https://github.com/fox-it/BloodHound.py.git"} 
   - {dir_name: "certi", repo: "https://github.com/zer1t0/certi.git"}
   - {dir_name: "certipy", repo: "https://github.com/ly4k/Certipy.git"}
   - {dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails.git"}
+  - {dir_name: "CMSmap", repo: "https://github.com/dionach/CMSmap.git"}
   - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch.git"}
   - {dir_name: "google-dork-scan", repo: "https://github.com/IvanGlinkin/Fast-Google-Dorks-Scan.git"}
   - {dir_name: "github-search", repo: "https://github.com/gwen001/github-search.git"}
@@ -59,6 +88,9 @@ git_repos:
   - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr.git"}
   - {dir_name: "o365spray", repo: "https://github.com/hackedbyagirl/o365spray.git"}
   - {dir_name: "PCredz", repo: "https://github.com/lgandx/PCredz.git"}
+  - {dir_name: "Pentest-Scripts", repo: "https://github.com/averagesecurityguy/scripts.git"}
+  - {dir_name: "PetitPotam", repo: "https://github.com/topotam/PetitPotam.git"}
+  - {dir_name: "PKINITtools", repo: "https://github.com/dirkjanm/PKINITtools"}
   - {dir_name: "pywhisker", repo: "https://github.com/ShutdownRepo/pywhisker.git"}
   - {dir_name: "quieter-firefox", repo: "https://bitbucket.org/mrbbking/quieter-firefox.git"}
   - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail.git"}
@@ -67,4 +99,3 @@ git_repos:
 
 # aquatone, which is installed manually
 aquatone: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"
-
