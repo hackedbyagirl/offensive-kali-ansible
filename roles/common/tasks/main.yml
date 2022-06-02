@@ -4,9 +4,9 @@
   become: True
   ansible.builtin.import_tasks: apt.yml
   
-- name: Set Environment
+- name: Set Environment Variables in .zshrc file 
   become: True
-  ansible.builtin.import_tasks: env.yml
+  ansible.builtin.import_tasks: zshrc.yml
 
 - name: Python Packages
   ansible.builtin.import_tasks: pip.yml
