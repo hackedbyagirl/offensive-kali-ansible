@@ -1,5 +1,5 @@
 ---
-# Installing git repos -- better for permission handling
+# Installing git repos and creating directories with permission handling
 - name: Install tools from github and set permissions
   block:
   - name: Create a directory for each tool to be installed
@@ -23,6 +23,7 @@
 
   - name: Set new file privileges -- recursive
     ansible.builtin.file:
+      owner: "{{ group  }}"
       path: "{{ git_base_dir }}/{{ item.dir_name }}"
       mode: 0755
       recurse: yes
@@ -41,10 +42,14 @@
         - certi
         - knockpy  
 
-    - name: Setup impacket requirements
+    - name: Execute pip install . for impacket and bloodhound
       ansible.builtin.command: pip install .
       args:
-        chdir: /opt/impacket
+        chdir: "{{git_base_dir}}/{{item}}"
+      loop:
+        - impacket
+        - bloodhound
+
 
     - name: Install pip dependencies for required git repos
       ansible.builtin.command: pip install -r requirements.txt
