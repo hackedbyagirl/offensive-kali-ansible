@@ -1,0 +1,85 @@
+---
+# Burp pro installation and setup -- taken from https://github.com/cisagov/ansible-role-kali/blob/develop/tasks/burp_suite_pro.yml
+# Needs to be setup -- this is just a template
+
+
+
+# Check if Burp Suite Pro is already installed
+- name: Check if Burp Suite Pro is already installed
+  stat:
+    path: "{{ burp_suite_install_directory }}"
+  register: burp_suite_directory
+
+- name: Install Burp Suite Pro
+  block:
+    - name: Grab Burp Suite Pro installer from S3
+      aws_s3:
+        bucket: "{{ third_party_bucket_name }}"
+        object: "{{ burp_suite_installer_object_name }}"
+        dest: /tmp/{{ burp_suite_installer_object_name }}
+        mode: get
+      become: no
+      delegate_to: localhost
+
+    - name: Copy the Burp Suite Pro installer
+      copy:
+        dest: /tmp/{{ burp_suite_installer_object_name }}
+        mode: 0700
+        src: /tmp/{{ burp_suite_installer_object_name }}
+
+    - name: Install Burp Suite Pro installation prerequisites
+      package:
+        name: "{{ burp_suite_installation_prerequisites }}"
+
+    - name: Install Burp Suite Pro
+      expect:
+        command: /tmp/{{ burp_suite_installer_object_name }}
+        creates: "{{ burp_suite_install_directory }}"
+        responses:
+          # $ sudo ./burpsuite_pro_linux_v2020_11.sh
+          # Unpacking JRE ...
+          # Starting Installer ...
+          # This will install Burp Suite Professional on your computer.
+          # OK [o, Enter], Cancel [c]
+          #
+          # Click Next to continue, or Cancel to exit Setup.
+          # Select the folder where you would like Burp Suite Professional to be
+          # installed, then click Next.
+          # Where should Burp Suite Professional be installed?
+          # [/usr/local/BurpSuitePro]
+          #
+          # Create symlinks?
+          # Yes [y, Enter], No [n]
+          #
+          # Select the folder where you would like Burp Suite Professional to create symlinks, then click Next.
+          # [/usr/local/bin]
+          #
+          # Extracting files ...
+          # Setup has finished installing Burp Suite Professional on your computer.
+          # Finishing installation ...
+          "This will install Burp Suite Professional on your computer\\.": o
+          "Where should Burp Suite Professional be installed\\?": "{{ burp_suite_install_directory }}"
+          "Create symlinks\\?": "y"
+          "Select the folder where you would like Burp Suite Professional to create symlinks, then click Next": "{{ burp_suite_symlinks_directory }}"
+        timeout: 300
+      # This failed_when clause is required because the installer
+      # command returns a nonzero return code even when it succeeds.
+      failed_when:
+        - install_command.rc != 0
+        - install_command.rc != 1
+        - install_command.rc != 2
+      register: install_command
+
+    - name: Delete local copy of Burp Suite Pro installer
+      file:
+        path: /tmp/{{ burp_suite_installer_object_name }}
+        state: absent
+      become: no
+      delegate_to: localhost
+
+    - name: Delete remote copy of Burp Suite Pro installer
+      file:
+        path: /tmp/{{ burp_suite_installer_object_name }}
+        state: absent
+
+  when: not burp_suite_directory.stat.exists
