@@ -10,24 +10,10 @@
     name: '{{ item }}'
     state: latest
     executable: pip3
-  loop:
-    - bloodhound
-    - ldap3  
-    - Cython
-    - mitm6
-    - pipenv
-    - poetry
-    - python3-ldap
-    - python-libpcap
-    - requests
-    - unicorn
+  loop: '{{ pip_packages }}'
 
 - name: Install pipx
   ansible.builtin.shell: python3 -m pip install --user pipx
 
-- name: Source Path and Download witnessme
-  ansible.builtin.shell: source .zshrc && pipx install witnessme --force
-  args:
-    executable: /bin/zsh
 
 
