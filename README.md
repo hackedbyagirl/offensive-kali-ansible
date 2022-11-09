@@ -15,8 +15,8 @@
 + [Getting Started](#getting_started)
 + [Usage](#usage)
 + [Execution](#execution)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
++ [Authors](#authors)
++ [Acknowledgments](#acknowledgement)
 
 ## 🧐 Description <a name = "description"></a>
 This playbook contains multiple tasks embedded within the roles. The current roles included in this ansible playbook include the following:
@@ -144,8 +144,8 @@ This playbook sets up ansible to be ran on a local host. To change that to, edit
 ### Setting a Remote User
 By default, ansible connects to all remote devices with the username you are using on the control node. If that username does not exist on the remote device, you will need to set a different username for the connection in the playbook. By default, this playbook will have the username set to `kali` in the inventory file `ansible/hosts.ini`
 
-
-## 🚀 Execution <a name = "execution"></a>
+##  🚀 Execution <a name = "execution"></a>
+Download, edit, and run!
 ```bash
 # clone repo, move to directory, execute playbook 
 git clone https://github.com/hackedbyagirl/offensive-kali-ansible.git
@@ -166,6 +166,7 @@ vim site.yml
 # Deploy playbook
 ansible-playbook -i ansible/hosts.ini site.yml --ask-become-pass
 ```
+
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@hackedbyagirl](https://github.com/kylelobo) 
