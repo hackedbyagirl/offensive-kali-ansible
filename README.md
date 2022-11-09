@@ -1,26 +1,42 @@
 <h1 align="center">Offensive Kali Ansible Playbook</h1>
 
-This Ansible Playbook automates the setup of kali machines used for both external and internal penetration tests. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine. 
+[![Status](https://img.shields.io/badge/Status-active-brightgreen)]() 
+[![GitHub Issues](https://img.shields.io/badge/Issues-0-yellow)]()
+[![License](https://img.shields.io/badge/License-gpl--3.0%20-blue)](/LICENSE)
 
- [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
+---
 
-## Table of Contents
+<p align="center"> This Ansible Playbook automates the setup of kali machines used for both external and internal penetration tests. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine.
+  <br>
+</p>  
+
+## 📝 Table of Contents
 + [Description](#description)
 + [Getting Started](#getting_started)
 + [Usage](#usage)
 + [Execution](#execution)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-## Description <a name = "description"></a>
+## 🧐 Description <a name = "description"></a>
 This playbook contains multiple tasks embedded within the roles. The current roles included in this ansible playbook include the following:
 
 - Common
-  - apt package updates, cleanup, and installation of offensive packages
-  - installation of common offensive python packages
-  - installation of common git repos as well as setting up their package dependencies
+  - Performs apt package updates, cleanup, and installation of common offensive packages
+  - Installation of common offensive python packages
+  - Installation of common git repos as well as setting up their package dependencies
+  - Installation of binary only tools
+  - Sets up basic zsh environment
+  - Sets up and install python models and packages
 - External
+  - Installs external testing related apt packages
+  - Installs external testing related golang packages
+  - Installs external testing related github repos
 - Internal
+  - Installs internal testing relating apt packages
+  - Installs internal testing related github reps
 
-## Getting Started <a name = "getting_started"></a>
+## 🏁 Getting Started <a name = "getting_started"></a>
 There are two ways you can deploy this ansible playbook. 
 - On local Kali Host
 - Remote Connection from mac (or linux) to Single or Multiple Hosts *Sorry Windows*
@@ -51,7 +67,7 @@ brew update
 brew install ansible
 ```
 ---
-## Usage <a name = "usage"></a>
+## 🎈 Usage <a name="usage"></a>
 To use this playbook, you can either run it from the kali host locally or you can deploy it remotely to a single or multiple hosts from your mac (or linux machine).
 
 ### Roles
@@ -93,7 +109,7 @@ This ansible playbook can be deployed against a signle host or multiple machines
 This playbook is intented to automate a defaut offensive environment on kali hosts. In order to use this playbook efficently, it should be run against an inventory of kali hosts. This can be done by creating an inventory of hosts.
 
 
-To configure the hosts inventory, open and edit the hosts.ini file to include the hosts in the following manner. This is jsut an example. 
+To configure the hosts inventory, open and edit the hosts.ini file to include the hosts in the following manner. This is just an example. 
 
 ```
 [kali]
@@ -129,7 +145,7 @@ This playbook sets up ansible to be ran on a local host. To change that to, edit
 By default, ansible connects to all remote devices with the username you are using on the control node. If that username does not exist on the remote device, you will need to set a different username for the connection in the playbook. By default, this playbook will have the username set to `kali` in the inventory file `ansible/hosts.ini`
 
 
-## Execution <a name = "execution"></a>
+## 🚀 Execution <a name = "execution"></a>
 ```bash
 # clone repo, move to directory, execute playbook 
 git clone https://github.com/hackedbyagirl/offensive-kali-ansible.git
@@ -138,9 +154,21 @@ cd offensive-kali-ansible
 # Edit inventory file with host and configurations -- save 
 vim ansible/hosts.ini
 
+# Edit global variabsl 
+vim group_vars/kali/main
+<zsh_user> - line 3
+<group> - line 92
+<user> - line 93
+
 # Edit site.yml to ensure it's being deployed on kali hosts
 vim site.yml
 
 # Deploy playbook
 ansible-playbook -i ansible/hosts.ini site.yml --ask-become-pass
 ```
+## ✍️ Authors <a name = "authors"></a>
+
+- [@hackedbyagirl](https://github.com/kylelobo) 
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- [@cisagov - ansible-role-kali](https://github.com/cisagov/ansible-role-kali)
