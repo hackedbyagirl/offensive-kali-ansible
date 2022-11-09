@@ -2,8 +2,6 @@
 # Burp pro installation and setup -- taken from https://github.com/cisagov/ansible-role-kali/blob/develop/tasks/burp_suite_pro.yml
 # Needs to be setup -- this is just a template
 
-
-
 # Check if Burp Suite Pro is already installed
 - name: Check if Burp Suite Pro is already installed
   stat:

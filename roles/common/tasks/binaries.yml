@@ -1,0 +1,15 @@
+- name: Download Aquatone Pre-compiled Binaries -- Unzip Files
+  ansible.builtin.unarchive:
+    src: "{{aquatone}}"
+    dest: /usr/bin
+    remote_src: yes
+    group: "{{ group }}"
+    mode: 0755
+
+- name: Download Assetfinder Pre-compiled Binaries -- Unzip Files
+  ansible.builtin.unarchive:
+    src: "{{assetfinder}}"
+    dest: /usr/bin
+    remote_src: yes
+    group: "{{ group }}"
+    mode: 0755

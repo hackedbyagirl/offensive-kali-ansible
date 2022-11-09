@@ -1,6 +1,6 @@
 <h1 align="center">Offensive Kali Ansible Playbook</h1>
 
-This Ansible Playbook deploys initial configuration for offensive kali machines. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine. 
+This Ansible Playbook automates the setup of kali machines used for both external and internal penetration tests. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine. 
 
  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
 
@@ -16,7 +16,9 @@ This playbook contains multiple tasks embedded within the roles. The current rol
 - Common
   - apt package updates, cleanup, and installation of offensive packages
   - installation of common offensive python packages
-  - installation of common git repos as well as setting up their package dependencies  
+  - installation of common git repos as well as setting up their package dependencies
+- External
+- Internal
 
 ## Getting Started <a name = "getting_started"></a>
 There are two ways you can deploy this ansible playbook. 
@@ -51,6 +53,21 @@ brew install ansible
 ---
 ## Usage <a name = "usage"></a>
 To use this playbook, you can either run it from the kali host locally or you can deploy it remotely to a single or multiple hosts from your mac (or linux machine).
+
+### Roles
+To decide which roles you would like to do, edit the `site.yml` file.
+
+Ex: If you are performing an external penetration test, the site file should look like this:
+
+```yaml
+# Main Playbook
+---
+- hosts: kali
+  roles:
+    - common 
+    - external
+```
+Vice versa for internal, or even both! They can be integrated to include all tools for each portion of a test. 
 
 ### Local Execution - Kali Host
  After ansible is installed on your local kali host, clone this repo and run ansible playbook.

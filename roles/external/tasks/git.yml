@@ -9,7 +9,7 @@
       mode: 0755
       path: "{{ item.path }}/{{ item.dir_name }}"
       state: directory
-    loop: "{{ git_repos }}"
+    loop: "{{ e_git_repos }}"
     loop_control:
       label: "{{ item.dir_name }}"
 
@@ -18,7 +18,7 @@
       repo: "{{ item.repo }}"
       dest: "{{ item.path }}/{{ item.dir_name }}"
       force: true
-    loop: "{{ git_repos }}"
+    loop: "{{ e_git_repos }}"
     loop_control:
       label: "{{item.repo}}"
 
@@ -28,7 +28,7 @@
       path: "{{ item.path }}/{{ item.dir_name }}"
       mode: 0755
       recurse: yes
-    loop: "{{git_repos}}"
+    loop: "{{e_git_repos}}"
     loop_control:
       label: "{{item.repo}}"
 
@@ -39,7 +39,7 @@
       ansible.builtin.command: python3 setup.py install
       args:
         chdir: "{{item.path}}"
-      loop: "{{python_setup_common}}"
+      loop: "{{python_setup_external}}"
       loop_control:
         label: "{{item.path}}"
 
@@ -47,7 +47,6 @@
       ansible.builtin.command: python3 -m pip install -r requirements.txt
       args:
         chdir: "{{item.path}}"
-      loop: "{{pip_install_common}}"
+      loop: "{{pip_install_external}}"
       loop_control:
         label: "{item.path}"
- 

@@ -1,44 +1,71 @@
 ---
-# apt packages to install
-kali_packages:
-  - assetfinder
-  - awscli
-  - bettercap
-  - bloodhound
-  - build-essential
-  - chromium
-  - docker.io
-  - docker-compose
-  - dnsutils
-  - eyewitness
-  - ffuf
-  - gdb
-  - gdbserver
-  - gem
-  - gobuster
-  - golang
-  - jq
-  - libpcap-dev
-  - libssl-dev
-  - libbz2-dev 
-  - libreadline-dev
-  - libsqlite3-dev 
-  - libncurses5-dev 
-  - libncursesw5-dev
-  - liblzma-dev 
-  - mimikatz
-  - ncat
-  - nbtscan-unixwiz
-  - neo4j
-  - npm
-  - parallel
-  - powershell-empire
-  - python3-openssl
-  - python3-pip
-  - python3-venv
-  - seclists
-  - spiderfoot
-  - sublist3r
+# zsh_setup
+zsh_user: <user_name>
+
+# common apt packages to install
+apt_packages:
+- awscli
+- bettercap
+- build-essential
+- chromium
+- docker.io
+- docker-compose
+- dnsutils
+- eyewitness
+- ffuf
+- gdb
+- gdbserver
+- gem
+- gobuster
+- golang
+- jq
+- libffi-dev
+- libpcap-dev
+- libssl-dev
+- libbz2-dev 
+- libreadline-dev
+- libsqlite3-dev 
+- libncurses5-dev 
+- libncursesw5-dev
+- liblzma-dev 
+- libguestfs-tools
+- libssl-dev
+- libwacom-common
+- libkrb5-dev
+- llvm
+- msfpc
+- mimikatz
+- ncat
+- nbtscan-unixwiz
+- neo4j
+- npm
+- parallel
+- powershell-empire
+- python-setuptools
+- python3-setuptools
+- python3-distintils
+- python3-openssl
+- python3-pip
+- python3-venv
+- python3.9-dev
+- python3.9-full
+- seclists
+- tk-dev
+- xz-utils
+- zlib1g-dev
+- zsh
+- zsh-syntax-highlighting
+
+# external only apt related packages
+e_apt_packages:
+- assetfinder
+- spiderfoot
+- sublist3r
+
+# internal only apt related packages
+i_apt_packages:
+- bloodhound
+- nbtscan-unixwiz
     
 # pip packages    
 pip_packages:
@@ -62,40 +89,108 @@ gem_packages:
   - wpscan
 
 # Group ownership for the tools that are installed directly to /opt
-group: kali
-user: kali
+group: <user_group> 
+user: <user_name>
 
-# Base directory where all manually-installed tools will be installed
-git_base_dir: "/opt"
-
-# Tools to be manually installed
+# Common Role git repos 
 git_repos:
-  - {dir_name: "bloodhound", repo: "https://github.com/fox-it/BloodHound.py.git"} 
-  - {dir_name: "certi", repo: "https://github.com/zer1t0/certi.git"}
-  - {dir_name: "certipy", repo: "https://github.com/ly4k/Certipy.git"}
-  - {dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails.git"}
-  - {dir_name: "CMSmap", repo: "https://github.com/dionach/CMSmap.git"}
-  - {dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch.git"}
-  - {dir_name: "google-dork-scan", repo: "https://github.com/IvanGlinkin/Fast-Google-Dorks-Scan.git"}
-  - {dir_name: "github-search", repo: "https://github.com/gwen001/github-search.git"}
-  - {dir_name: "gnmap-parser", repo: "https://github.com/ChrisTruncer/gnmap-parser.git"}
-  - {dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher.git"}
-  - {dir_name: "ImpDump", repo: "https://github.com/HarmJ0y/ImpDump.git"}
-  - {dir_name: "impacket", repo: "https://github.com/SecureAuthCorp/impacket.git"}
-  - {dir_name: "JSscanner", repo: "https://github.com/dark-warlord14/JSScanner.git"}
-  - {dir_name: "knockpy", repo: "https://github.com/guelfoweb/knock.git"}
-  - {dir_name: "mikto", repo: "https://github.com/ChrisTruncer/mikto.git"}
-  - {dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr.git"}
-  - {dir_name: "o365spray", repo: "https://github.com/hackedbyagirl/o365spray.git"}
-  - {dir_name: "PCredz", repo: "https://github.com/lgandx/PCredz.git"}
-  - {dir_name: "Pentest-Scripts", repo: "https://github.com/averagesecurityguy/scripts.git"}
-  - {dir_name: "PetitPotam", repo: "https://github.com/topotam/PetitPotam.git"}
-  - {dir_name: "PKINITtools", repo: "https://github.com/dirkjanm/PKINITtools"}
-  - {dir_name: "pywhisker", repo: "https://github.com/ShutdownRepo/pywhisker.git"}
-  - {dir_name: "quieter-firefox", repo: "https://bitbucket.org/mrbbking/quieter-firefox.git"}
-  - {dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail.git"}
-  - {dir_name: "spiderfoot", repo: "https://github.com/smicallef/spiderfoot.git"} 
-  - {dir_name: "Token-Reverser", repo: "https://github.com/dariusztytko/token-reverser.git"}
+  - {path: "/opt/recon-tools", dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails.git"}
+  - {path: "/opt/recon-tools", dir_name: "google-dork-scan", repo: "https://github.com/IvanGlinkin/Fast-Google-Dorks-Scan.git"}
+  - {path: "/opt/recon-tools", dir_name: "github-search", repo: "https://github.com/gwen001/github-search.git"}
+  - {path: "/opt/recon-tools", dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail.git"}
+  - {path: "/opt/recon-tools", dir_name: "o365spray", repo: "https://github.com/hackedbyagirl/o365spray.git"}
+  - {path: "/opt/recon-tools", dir_name: "DumpsterDiver", repo: "https://github.com/securing/DumpsterDiver.git"}
+  - {path: "/opt/recon-tools", dir_name: "gitGraber", repo: "https://github.com/hisxo/gitGraber.git"}
+  - {path: "/opt/recon-tools", dir_name: "changeme", repo: "https://github.com/ztgrace/changeme"}
+  - {path: "/opt/recon-tools", dir_name: "defaultcredsearch", repo: "https://github.com/ihebski/DefaultCreds-cheat-sheet.git"}
+  - {path: "/opt/recon-tools", dir_name: "hash-identifier", repo: "https://github.com/HashPals/Name-That-Hash.git"}
+  - {path: "/opt/recon-tools", dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher.git"}
+  - {path: "/opt/recon-tools", dir_name: "findsploit", repo: "https://github.com/1N3/Findsploit.git"}
+  - {path: "/opt/recon-tools", dir_name: "payload-generator", repo: "https://github.com/g0tmi1k/msfpc.git"}
 
-# aquatone, which is installed manually
+  - {path: "/opt/web-tools", dir_name: "CMSmap", repo: "https://github.com/dionach/CMSmap.git"}
+  - {path: "/opt/web-tools", dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch.git"}
+  - {path: "/opt/web-tools", dir_name: "quieter-firefox", repo: "https://bitbucket.org/mrbbking/quieter-firefox.git"}
+  - {path: "/opt/web-tools", dir_name: "Token-Reverser", repo: "https://github.com/dariusztytko/token-reverser.git"}
+  - {path: "/opt/web-tools", dir_name: "JSscanner", repo: "https://github.com/dark-warlord14/JSScanner.git"}
+  - {path: "/opt/web-tools", dir_name: "jwt_tool", repo: "https://github.com/ticarpi/jwt_tool.git"}
+  - {path: "/opt/web-tools", dir_name: "SleuthQL", repo: "https://github.com/RhinoSecurityLabs/SleuthQL.git"}    
+
+  - {path: "/opt/network-tools", dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr.git"}
+  - {path: "/opt/network-tools", dir_name: "Pentest-Scripts", repo: "https://github.com/averagesecurityguy/scripts.git"}
+
+  # External Only git repos
+ e_git_repos: 
+  - {path: "/opt/recon-tools", dir_name: "spiderfoot", repo: "https://github.com/smicallef/spiderfoot.git"} 
+  - {path: "/opt/recon-tools", dir_name: "knockpy", repo: "https://github.com/guelfoweb/knock.git"}
+  - {path: "/opt/recon-tools", dir_name: "censys-subdomain-finder", repo: "https://github.com/christophetd/censys-subdomain-finder.git"}
+  - {path: "/opt/recon-tools", dir_name: "msdorkdump", repo: "https://github.com/dievus/msdorkdump.git"}
+  - {path: "/opt/recon-tools", dir_name: "Turbolist3r", repo: "https://github.com/fleetcaptain/Turbolist3r.git"}
+
+  - {path: "/opt/web-tools", dir_name: "Goblyn", repo: "https://github.com/loseys/Goblyn.git"}
+  - {path: "/opt/web-tools", dir_name: "VHostScan", repo: "VHostScan https://github.com/codingo/VHostScan.git"}
+  - {path: "/opt/web-tools", dir_name: "BlackWidow", repo: "https://github.com/1N3/BlackWidow.git"}
+
+  # Internal only git repos
+ i_git_repos: 
+  - {path: "/opt/network-tools", dir_name: "bloodhound", repo: "https://github.com/fox-it/BloodHound.py.git"} 
+  - {path: "/opt/network-tools", dir_name: "certi", repo: "https://github.com/zer1t0/certi.git"}
+  - {path: "/opt/network-tools", dir_name: "certipy", repo: "https://github.com/ly4k/Certipy.git"}
+  - {path: "/opt/network-tools", dir_name: "PCredz", repo: "https://github.com/lgandx/PCredz.git"}
+  - {path: "/opt/network-tools", dir_name: "Pentest-Scripts", repo: "https://github.com/averagesecurityguy/scripts.git"}
+  - {path: "/opt/network-tools", dir_name: "PetitPotam", repo: "https://github.com/topotam/PetitPotam.git"}
+  - {path: "/opt/network-tools", dir_name: "PKINITtools", repo: "https://github.com/dirkjanm/PKINITtools"}
+  - {path: "/opt/network-tools", dir_name: "pywhisker", repo: "https://github.com/ShutdownRepo/pywhisker.git"}
+  - {path: "/opt/network-tools", dir_name: "impacket", repo: "https://github.com/SecureAuthCorp/impacket.git"}
+  - {path: "/opt/network-tools", dir_name: "pyWhat-pcap", repo: "https://github.com/bee-san/pyWhat.git"}
+  - {path: "/opt/network-tools", dir_name: "exploit-suggester", repo: "https://github.com/jondonas/linux-exploit-suggester-2.git"}
+  - {path: "/opt/network-tools", dir_name: "rootend", repo: "https://github.com/twelvesec/rootend.git"}
+  - {path: "/opt/network-tools", dir_name: "LinPEAs", repo: "https://github.com/carlospolop/PEASS-ng.git"}
+  - {path: "/opt/network-tools", dir_name: "LinuxSmartEnumeration", repo: "https://github.com/diego-treitos/linux-smart-enumeration.git"}
+  - {path: "/opt/network-tools", dir_name: "LinEnum", repo: "https://github.com/rebootuser/LinEnum.git"}
+  - {path: "/opt/network-tools", dir_name: "LinuxPrivChecker", repo: "https://github.com/sleventyeleven/linuxprivchecker.git"}
+  - {path: "/opt/network-tools", dir_name: "SudoKiller", repo: "https://github.com/TH3xACE/SUDO_KILLER.git"}
+  - {path: "/opt/network-tools", dir_name: "BeRoot", repo: "https://github.com/AlessandroZ/BeRoot.git"}
+
+ # pip install
+pip_install_common: 
+  - {path: "/opt/osint-tools/DumpsterDiver"}
+  - {path: "/opt/web-tools/jwt_tool"}
+
+pip_install_external: 
+  - {path: "/opt/osint-tools/knockpy"}
+  - {path: "/opt/osint-tools/msdorkdump"}
+
+pip_install_internal: 
+  - {path: "/opt/network-tools/certi"}
+  - {path: "/opt/network-tools/certipy"}
+  - {path: "/opt/osint-tools/DumpsterDiver"}
+  
+# python setup
+python_setup_common:
+  - {path: "/opt/web-tools/dirsearch"}
+
+# python setup
+python_setup_external:
+  - {path: "/opt/web-tools/VHostScan"}
+  - {path: "/opt/web-tools/Goblyn"}
+  - {path: "/opt/network-tools/spiderfoot"}
+  - {path: "/opt/network-tools/censys-subdomain-finder"}
+
+# python setup
+python_setup_internal:
+  - {path: "/opt/network-tools/pywhisker"} 
+
+# GoLang Tools -- Only on external
+go_tools:
+  - {tool: "hakrawler", repo: "github.com/hakluke/hakrawler@latest"}
+  - {tool: "shhgit", repo: "github.com/eth0izzle/shhgit@latest"}
+  - {tool: "gitleaks", repo: "github.com/zricethezav/gitleaks.git@latest"}
+  - {tool: "trufflehog", repo: "github.com/trufflesecurity/trufflehog.git@latest"}
+  - {tool: "CloudBrute", repo: "github.com/0xsha/CloudBrute@latest"}
+  - {tool: "waybackurls", repo: "github.com/tomnomnom/waybackurls@latest"}
+  - {tool: "subjack", repo: "github.com/haccer/subjack@latest"}
+
+#binaries
 aquatone: "https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip"
+assetfinder: "https://github.com/tomnomnom/assetfinder/releases/download/v0.1.1/assetfinder-linux-amd64-0.1.1.tgz"

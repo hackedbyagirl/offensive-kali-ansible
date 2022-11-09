@@ -6,7 +6,7 @@
   
 - name: Set Environment Variables in .zshrc file 
   become: True
-  ansible.builtin.import_tasks: zshrc.yml
+  ansible.builtin.import_tasks: env.yml
 
 - name: Python Packages
   ansible.builtin.import_tasks: pip.yml
@@ -15,7 +15,6 @@
   become: True
   ansible.builtin.import_tasks: git.yml
 
-- name: Install Aquatone Package
+- name: Install Binary Packages
   become: True
-  ansible.builtin.import_tasks: aquatone.yml
-
+  ansible.builtin.import_tasks: binaries.yml

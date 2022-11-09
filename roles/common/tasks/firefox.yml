@@ -1,4 +1,5 @@
 --- 
+# Not used -- only for future
 # Firefox personalization
     - name: Set firefox_default_profile_dir fact
       ansible.builtin.set_fact:

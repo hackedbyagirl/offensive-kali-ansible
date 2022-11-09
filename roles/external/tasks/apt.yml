@@ -1,0 +1,24 @@
+---  
+- name: apt-update packages
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Remove useless packages from cache
+  ansible.builtin.apt:
+    autoclean: true      
+ 
+- name: Install external related apt packages
+  ansible.builtin.apt:
+    update_cache: yes
+    force_apt_get: yes
+    install_recommends: yes
+    name: "{{ item }}"
+    state: latest 
+  loop: "{{ e_apt_packages }}"
+  
+- name: Remove package dependencies that are no longer required 
+  ansible.builtin.apt:
+    autoremove: true        
+
+- name: Update local Database
+  ansible.builtin.command: updatedb
